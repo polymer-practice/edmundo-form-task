@@ -49,11 +49,6 @@
         cursor: pointer;
         color: var(--secondary-color);
         @apply --form__button;
-        /*align-self: flex-end;
-        background-color: var(--primary-color);
-        border-radius: 4px;
-        height: var(--height);
-        width: fit-content;*/
       }
       .form__button :hover {
         border: 2px solid black;
@@ -117,8 +112,9 @@
           }
         }; 
       }
-      
+
       onSubmit(event) {
+        event.preventDefault();
         console.log('Funca!');
       };
     }
