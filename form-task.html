@@ -75,11 +75,16 @@
     on-submit="onSubmit">
       <div class="form-group">
           <label for="text-input" class="input__label">[[inputLabel]]</label>
-          <input type="text" name="text-input" id="text-input" class="input__control"> 
+          <input 
+            type="text" 
+            name="text-input" 
+            id="text-input" 
+            class="input__control"
+            value="{{_input-text::input}}"
+            > 
           <button 
             type="submit" 
             class="form__button"
-           
             >[[buttonText]]</button>
       </div>
     </form>
@@ -110,6 +115,9 @@
           buttonText: {
             type: String,
             value: 'Save task'
+          },
+          _inputText: {
+            type: String
           }
         }; 
       }
@@ -121,7 +129,7 @@
           bubbles: true,
           composed: true,
           detail:{
-            extraInfo:'info extra del evento'
+            inputText: this._inputText
           }
         });
         this.dispatchEvent(myCustomEvent);
