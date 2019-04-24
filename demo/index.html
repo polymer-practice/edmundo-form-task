@@ -38,10 +38,15 @@
       <demo-snippet>
         <template>
           <form-task
+          id="form-task"
           input-label="Hola chicos"
           button-text="Que tal"
           ></form-task>
         </template>
+        <script>
+          let formTask = document.getElementById('form-task');
+          formTask.addEventListener('on-custom-submit',(event)=>{console.log('Custom submit')})
+        </script>
       </demo-snippet>
     </div>
   </body>

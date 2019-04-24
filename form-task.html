@@ -71,14 +71,15 @@
         }
       }
     </style>
-    <form class="form">
+    <form class="form" 
+    on-submit="onSubmit">
       <div class="form-group">
           <label for="text-input" class="input__label">[[inputLabel]]</label>
           <input type="text" name="text-input" id="text-input" class="input__control"> 
           <button 
-            type="button" 
+            type="submit" 
             class="form__button"
-            on-click="onSubmit"
+           
             >[[buttonText]]</button>
       </div>
     </form>
@@ -115,7 +116,15 @@
 
       onSubmit(event) {
         event.preventDefault();
-        console.log('Funca!');
+        //console.log('Funca!');
+        let myCustomEvent = new CustomEvent('custom-submit',{
+          bubbles: true,
+          composed: true,
+          detail:{
+            extraInfo:'info extra del evento'
+          }
+        });
+        this.dispatchEvent(myCustomEvent);
       };
     }
 
