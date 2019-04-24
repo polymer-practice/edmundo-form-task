@@ -5,9 +5,89 @@
     <style>
       :host {
         display: block;
+        --primary-color: var(--primary-color-form-task ,#3f51b5);
+        --secondary-color: var(--secondary-color-form-task , #fff);
+        --breakpoint: 600px;
+        --height: var(--height-form-task, 35px);
+        --font-size: var(--font-size-form-task, 15px);
+        --font-weight: var(--font-weight-form-task,300);
+        --spacing_8: 8px;
+        --spacing_16: 16px;
+        font-size: var(--font-size);
+        font-weight: var(--font-weight);
+      }
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+      .input__control {
+        border: 1px solid #ccc;
+        width: 100%;
+        margin: 5px 0px;
+        border-radius: 4px;
+        font-size: 20px;
+        height: var(--height);
+        @apply --input__control;
+        /*margin-bottom: var(--spacing_8);*/
+      }
+      .input__control:focus {
+        outline: none;
+        border: 3px solid var(--primary-color);
+      }
+      .input__label {
+        border-radius: 4px;
+        margin-bottom: var(--spacing_8);
+      }
+      .form__button {
+        max-width: 75px;
+        height: 38px;
+        margin-left: auto;
+        background-color: var(--primary-color);
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        color: var(--secondary-color);
+        @apply --form__button;
+        /*align-self: flex-end;
+        background-color: var(--primary-color);
+        border-radius: 4px;
+        height: var(--height);
+        width: fit-content;*/
+      }
+      .form__button :hover {
+        border: 2px solid black;
+      }
+      @media all and (min-width: 600px) {
+        .form-group {
+          flex-direction: row;
+          justify-content: space-evenly;
+          align-content: center;
+        }
+        .form__button {
+          align-self: center;
+        }
+        .input__label {
+          align-self: center;
+
+        }
+        .input__control {
+          margin: 5px;
+        }
       }
     </style>
-    <h2>Hello [[prop1]]!</h2>
+    <form class="form">
+      <div class="form-group">
+          <label for="text-input" class="input__label">[[inputLabel]]</label>
+          <input type="text" name="text-input" id="text-input" class="input__control"> 
+          <button 
+            type="button" 
+            class="form__button"
+            on-click="onSubmit"
+            >[[buttonText]]</button>
+      </div>
+    </form>
+    
   </template>
 
   <script>
@@ -26,9 +106,21 @@
           prop1: {
             type: String,
             value: 'form-task'
+          },
+          inputLabel: {
+            type: String,
+            value:'Insert task'
+          },
+          buttonText: {
+            type: String,
+            value: 'Save task'
           }
-        };
+        }; 
       }
+      
+      onSubmit(event) {
+        console.log('Funca!');
+      };
     }
 
     window.customElements.define(FormTask.is, FormTask);
