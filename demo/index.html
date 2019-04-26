@@ -45,7 +45,7 @@
         </template>
         <script>
           let formTask = document.getElementById('form-task');
-          formTask.addEventListener('custom-submit',(event)=>{console.log('detalle de evento: ',event.detail)});
+          formTask.addEventListener('custom-submit',(event)=>{console.log('detalle de evento: ',event.detail.inputText)});
         </script>
       </demo-snippet>
     </div>
